@@ -18,6 +18,15 @@ body {
     color: var(--sub-color-darker);
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    background: white;
+}
+
 section {
     padding: 2em;
 }
@@ -32,14 +41,15 @@ section {
 }
 
 .hero h1 {
+    color: var(--theme-color);
     font-size: 4em;
-    margin: 0;
 }
 
 h1.logo {
     color: var(--theme-color);
     display: flex;
     align-items: center;
+    margin: 0;
 }
 
 h1.logo a {
@@ -66,11 +76,68 @@ h1.logo img {
     text-decoration: none;
     font-size: 1.2em;
     margin: 1em;
+    -webkit-appearance: none;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 7px 1em hsla(45, 100%, 30%, 0.1); /* var(--theme-color-darker) with 0.1 opacity */
+}
+
+body.auth .hero h1 {
+    font-size: 3em;
+    margin-bottom: 0.25em;
+}
+
+form label {
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+}
+
+form label.explainer {
+    justify-content: center;
+    color: var(--sub-color);
+}
+
+form label input {
+    width: 100%;
+    color: var(--sub-color-darker);
+}
+
+form .btn {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border: 2px solid transparent;
+}
+
+form .btn:focus {
+    outline: none;
+    border: 2px solid var(--theme-color-darker);
+}
+
+input[type="text"], input[type="email"] {
+    border: 2px solid var(--sub-color);
+    font-size: 1.1em;
+    padding: 0.6rem;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    outline: none;
+    border-color: var(--sub-color-darker);
+}
+
+input::placeholder {
+    color: var(--sub-color);
+}
+
+.horizontal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 * {

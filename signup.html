@@ -1,0 +1,34 @@
+<html>
+
+    <head>
+        <title>Sign up &mdash; maker.rocks</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/emoji.png">
+    </head>
+
+    <body class="auth signup">
+        <header>
+            <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+        </header>
+        <section class="hero">
+            <form action="javascript:void(0)" onsubmit="submitForm()">
+                <h1>Sign up</h1>
+                <label><input name="email" type="email" placeholder="cool.maker@example.com" required></label>
+                <label>maker.rocks/&nbsp;<input name="username" type="text" placeholder="username" required></label>
+                <label class="explainer">You will be emailed a login code.</label>
+                <button type="submit" class="btn">Claim my page!</button>
+            </form>
+        </section>
+    </body>
+
+</html>
+
+
+<script>
+    function submitForm() {
+        fetch('https://functions.maker.rocks/signup', {method: 'POST', body: JSON.stringify({
+            email: document.querySelector('input[name="email"]').value,
+            username: document.querySelector('input[name="username"]').value
+        })}).then(res => window.location = '/login-code-sent');
+    }
+</script>
