@@ -9,12 +9,13 @@
     --theme-color: hsl(45, 100%, 69%);
     --theme-color-darker: hsl(45, 100%, 30%);
     --sub-color: #979797;
+    --sub-color-darker: #575757;
 }
 
 body {
     margin: 0;
     font-family: 'Inter UI', sans-serif;
-    color: var(--sub-color);
+    color: var(--sub-color-darker);
 }
 
 section {
@@ -31,18 +32,27 @@ section {
 }
 
 .hero h1 {
-    color: var(--theme-color);
     font-size: 4em;
     margin: 0;
+}
+
+h1.logo {
+    color: var(--theme-color);
     display: flex;
     align-items: center;
 }
 
-.hero h1 img {
+h1.logo a {
+    color: var(--theme-color);
+    text-decoration: none;
+}
+
+h1.logo img {
     height: 1em;
 }
 
 .hero h2 {
+    color: var(--sub-color);
     font-weight: normal;
     font-size: 2em;
     margin: 0;
