@@ -1,0 +1,7 @@
+<script>
+    var URLParams = new URLSearchParams(window.location.search);
+    localStorage.signedIn = true;
+    localStorage.email = URLParams.get('email');
+    localStorage.code = URLParams.get('code');
+    window.location = '/';
+</script>
