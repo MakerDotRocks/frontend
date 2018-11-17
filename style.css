@@ -140,6 +140,22 @@ input::placeholder {
     align-items: center;
 }
 
+body.home form label {
+    justify-content: space-between;
+}
+
+body.home form label input {
+    width: 15em;
+    margin-left: 0.5em;
+}
+
+.notie-container {
+    box-shadow: none;
+    background: var(--theme-color);
+    border-radius: 0;
+    color: var(--theme-color-darker);
+}
+
 * {
     transition: all 0.2s;
 }

@@ -23,3 +23,10 @@
         </section>
     </body>
 </html>
+
+
+<script>
+    if(typeof localStorage.email !== 'undefined' && typeof localStorage.code !== 'undefined' && localStorage.signedIn == 'true') {
+        window.location = '/home';
+    }
+</script>

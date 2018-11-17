@@ -1,0 +1,62 @@
+<html>
+
+    <head>
+        <title>Home &mdash; maker.rocks</title>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/emoji.png">
+    </head>
+
+    <body class="home">
+        <header>
+            <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+        </header>
+        <section class="hero">
+            <form action="javascript:void(0)" onsubmit="submitForm()">
+                <h1>Accounts</h1>
+                <label>Product Hunt username &nbsp;<input name="productHuntUsername" type="text" placeholder="rrhoover"></label>
+                <label>Twitter username &nbsp;<input name="twitterUsername" type="text" placeholder="jack"></label>
+                <label>Makerlog username &nbsp;<input name="makerlogUsername" type="text" placeholder="sergio"></label>
+                <label>WIP.chat username &nbsp;<input name="wipUsername" type="text" placeholder="marckohlbrugge"></label>
+                <label>Twitch username &nbsp;<input name="twitchUsername" type="text" placeholder="justinkan"></label>
+                <button type="submit" class="btn">Save settings</button>
+            </form>
+        </section>
+    </body>
+
+</html>
+
+<script src="https://unpkg.com/notie"></script>
+
+<script>
+    fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
+        email: localStorage.email,
+        code: localStorage.code
+    })}).then(r => r.json()).then(res => {
+        console.log(res);
+        for(var i = 0; i < Object.keys(res).length; i++) {
+            var elem = document.querySelector(`input[name="${Object.keys(res)[i]}"]`);
+            if(elem !== null) {
+                elem.value = res[Object.keys(res)[i]];
+            }
+        }
+    });
+    
+    function submitForm() {
+        var metadataInputs = document.querySelectorAll('input[name]');
+        var metadata = {};
+        for(var i = 0; i < metadataInputs.length; i++) {
+            metadata[metadataInputs[i].getAttribute('name')] = metadataInputs[i].value
+        }
+        console.log(metadata);
+        
+        fetch('https://functions.maker.rocks/editmetadata', {method: 'POST', body: JSON.stringify({
+            email: localStorage.email,
+            code: localStorage.code,
+            metadata: metadata
+        })}).then(res => {
+            console.log(res);
+            notie.alert({ type: 1, text: 'Saved!'});
+        });
+    }
+</script>
