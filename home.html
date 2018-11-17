@@ -46,7 +46,8 @@
         var metadataInputs = document.querySelectorAll('input[name]');
         var metadata = {};
         for(var i = 0; i < metadataInputs.length; i++) {
-            metadata[metadataInputs[i].getAttribute('name')] = metadataInputs[i].value
+            metadataInputs[i].value = metadataInputs[i].value.replace(/^@/,'');
+            metadata[metadataInputs[i].getAttribute('name')] = metadataInputs[i].value;
         }
         console.log(metadata);
         
