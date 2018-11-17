@@ -17,6 +17,10 @@ body {
     color: var(--sub-color);
 }
 
+section {
+    padding: 2em;
+}
+
 .hero {
     min-height: 100vh;
     display: flex;
