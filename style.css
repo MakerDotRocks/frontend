@@ -3,7 +3,6 @@
 * {
     box-sizing: border-box;
     border-radius: 5px;
-    transition: all 0.2s;
 }
 
 :root {
@@ -58,4 +57,8 @@ body {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 7px 1em hsla(45, 100%, 30%, 0.1); /* var(--theme-color-darker) with 0.1 opacity */
+}
+
+* {
+    transition: all 0.2s;
 }
