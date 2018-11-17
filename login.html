@@ -1,0 +1,33 @@
+<html>
+
+    <head>
+        <title>Log in &mdash; maker.rocks</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/emoji.png">
+    </head>
+
+    <body class="auth login">
+        <header>
+            <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+        </header>
+        <section class="hero">
+            <form action="javascript:void(0)" onsubmit="submitForm()">
+                <h1>Log in</h1>
+                <label><input name="email" type="email" placeholder="cool.maker@example.com" required></label>
+                <label class="explainer">You will be emailed a login code.</label>
+                <button type="submit" class="btn">Send it to me :)</button>
+                <label class="explainer">NOTE: If you're logging in in a second browser,<br>please use the link send in your last login email.<br>Requesting a new code will sign you out of other browsers.</label>
+            </form>
+        </section>
+    </body>
+
+</html>
+
+
+<script>
+    function submitForm() {
+        fetch('https://functions.maker.rocks/login', {method: 'POST', body: JSON.stringify({
+            email: document.querySelector('input[name="email"]').value,
+        })}).then(res => window.location = '/login-code-sent');
+    }
+</script>
