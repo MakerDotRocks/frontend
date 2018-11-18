@@ -83,7 +83,7 @@
         }
     });
     
-    if(typeof localStorage.username !== 'undefined') {
+    if(typeof localStorage.username !== 'undefined' && localStorage.username !== 'undefined') {
         myProfile = username === localStorage.username;
     } else {
         fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
