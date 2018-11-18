@@ -55,6 +55,7 @@
     });
     
     function submitForm() {
+        document.querySelector('button[type="submit"]').innerHTML = 'Processing...';
         var metadataInputs = document.querySelectorAll('input[name]');
         var metadata = {};
         for(var i = 0; i < metadataInputs.length; i++) {
@@ -68,6 +69,7 @@
             code: localStorage.code,
             metadata: metadata
         })}).then(res => {
+            document.querySelector('button[type="submit"]').innerHTML = 'Save settings';
             console.log(res);
             notie.alert({ type: 1, text: 'Saved!'});
         });
