@@ -186,7 +186,7 @@ aside.loading {
 }
 
 aside.loading:before {
-    content: '👨‍💻';
+    content: '\01F468\0200D\01F4BB';
     font-size: 10em;
     animation: emoji-loader 0.75s infinite linear;
 }
