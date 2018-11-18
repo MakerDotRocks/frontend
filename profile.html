@@ -1,4 +1,75 @@
-<body></body>
+<html>
+
+    <head>
+        <title>maker.rocks</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/emoji.png">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+    </head>
+
+    <body class="profile">
+        <div id="app">
+            <title v-if="typeof productHuntName !== 'undefined'">{{productHuntName}} &mdash; maker.rocks</title>
+            <header>
+                <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+            </header>
+            <aside class="loading" v-bind:style="`opacity: 0; pointer-events: none`">
+                <h1>Loading a cool maker!</h1>
+            </aside>
+            <main class="profile-grid">
+                <section class="main-info">
+                    <img v-if="typeof productHuntImageURL !== 'undefined'" v-bind:src="productHuntImageURL" class="profile-image">
+                    <div class="profile-text">
+                        <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
+                        <div class="social-links">
+                            <a v-if="typeof personalWebsite !== 'undefined'" v-bind:href="personalWebsite" target="_blank"><i class="icon fa fa-globe"></i></a>
+                            <a v-if="typeof twitterUsername !== 'undefined'" v-bind:href="`https://twitter.com/${twitterUsername}`" target="_blank"><i class="icon fab fa-twitter"></i></a>
+                            <a v-if="typeof productHuntUsername !== 'undefined'" v-bind:href="`https://www.producthunt.com/@${productHuntUsername}`" target="_blank"><i class="icon fab fa-product-hunt"></i></a>
+                            <a v-if="typeof wipUsername !== 'undefined'" v-bind:href="`https://wip.chat/@${wipUsername}`" target="_blank"><span class="emoji icon">&#x1F6A7;</span></a>
+                            <a v-if="typeof makerlogUsername !== 'undefined'" v-bind:href="`https://getmakerlog.com/@${makerlogUsername}`" target="_blank"><i class="icon fas fa-check-circle"></i></a>
+                            <a v-if="typeof twitchUsername !== 'undefined'" v-bind:href="`https://www.twitch.tv/${twitchUsername}`" target="_blank"><i class="icon fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </section>
+                <section class="tasks" v-if="typeof makerlogTasks !== 'undefined' || typeof wipTasks !== 'undefined'">
+                    <h2>Recently completed tasks</h2>
+                    <div class="task" v-for="task in (typeof makerlogTasks !== 'undefined' ? makerlogTasks : wipTasks)">&#x2705; {{task.message}}</div>
+                </section>
+                <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
+                    <h2>Products launched</h2>
+                    <div class="product" v-for="product in productHuntProducts">
+                        <h3 class="name"><img v-bind:src="product.thumbnailURL" class="thumbnail">{{product.name}}</h3>
+                        <h4 class="tagline">{{product.tagline}}</h4>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </body>
+
+</html>
+
 <script>
-    document.body.innerHTML = 'Username: ' + window.location.pathname.split('/').reverse()[0];
+    var username = window.location.pathname.replace('/','').replace(/\..+/,'');
+    var data = {};
+    var vm;
+    
+    fetch('https://functions.maker.rocks/getpageinfo', {method: 'POST', body: JSON.stringify({
+        username: username
+    })}).then(r => r.json()).then(res => {
+        console.log(res);
+        for(var i = 0; i < Object.keys(res).length; i++) {
+            data[Object.keys(res)[i]] = res[Object.keys(res)[i]];
+        }
+
+        vm = new Vue({
+            el: '#app',
+            data: data
+        });
+        
+        if(data.productHuntName) {
+            document.head.removeChild(document.head.querySelector('title'));
+        }
+    });
 </script>
