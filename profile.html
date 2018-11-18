@@ -11,7 +11,7 @@
 
     <body class="profile">
         <div id="app">
-            <title v-if="typeof productHuntName !== 'undefined'">{{productHuntName}} &mdash; maker.rocks</title>
+            <link v-if="typeof productHuntImageURL !== 'undefined'" rel="shortcut icon" v-bind:href="productHuntImageURL">
             <header>
                 <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
             </header>
@@ -69,7 +69,11 @@
         });
         
         if(data.productHuntName) {
-            document.head.removeChild(document.head.querySelector('title'));
+            document.head.querySelector('title').innerHTML = `${data.productHuntName} &mdash; maker.rocks &#x1F918;`;
+        }
+        
+        if(data.productHuntImageURL) {
+            document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
         }
     });
 </script>
