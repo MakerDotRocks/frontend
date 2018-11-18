@@ -35,7 +35,7 @@
                 </section>
                 <section class="tasks" v-if="typeof makerlogTasks !== 'undefined' || typeof wipTasks !== 'undefined'">
                     <h2>Recently completed tasks</h2>
-                    <div class="task" v-for="task in (typeof makerlogTasks !== 'undefined' ? makerlogTasks : wipTasks)">&#x2705; {{task.message}}</div>
+                    <div class="task" v-for="task in (typeof makerlogTasks !== 'undefined' && makerlogTasks.length > 0 ? makerlogTasks : wipTasks)">&#x2705; {{task.message}}</div>
                 </section>
                 <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
                     <h2>Products launched</h2>
