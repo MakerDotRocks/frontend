@@ -265,8 +265,8 @@ body.profile aside.loading {
 }
 
 .profile-grid section.main-info .profile-text .social-links a .icon.emoji {
-    filter: brightness(0.5);
-    opacity: .75;
+    filter: brightness(0.4);
+    opacity: .65;
 }
 
 .profile-grid section.tasks .task {
