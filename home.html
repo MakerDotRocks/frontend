@@ -29,6 +29,10 @@
 <script src="https://unpkg.com/notie"></script>
 
 <script>
+    if(localStorage.signedIn !== 'true') {
+        window.location = '/';
+    }
+    
     fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
         email: localStorage.email,
         code: localStorage.code
