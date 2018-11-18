@@ -257,6 +257,11 @@ body.profile aside.loading {
     margin: 0;
 }
 
+.profile-grid section.products .product a {
+    text-decoration: none;
+    color: var(--subtle-color-darker);
+}
+
 .profile-grid section.products .product .name {
     display: flex;
     align-items: center;
@@ -270,6 +275,13 @@ body.profile aside.loading {
     object-fit: cover;
     object-position: center center;
     margin-right: 0.5em;
+}
+
+.profile-grid section.products .product .votes {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--sub-color);
+    margin-left: 1em;
 }
 
 .profile-grid section.products .product .tagline {
