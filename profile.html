@@ -14,6 +14,9 @@
             <link v-if="typeof productHuntImageURL !== 'undefined'" rel="shortcut icon" v-bind:href="productHuntImageURL">
             <header>
                 <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+                <nav v-if="myProfile">
+                    <a class="btn" href="/home">Edit profile</a>
+                </nav>
             </header>
             <aside class="loading" v-bind:style="`opacity: 0; pointer-events: none`">
                 <h1>Loading a cool maker!</h1>
@@ -54,6 +57,7 @@
 
 <script>
     var username = window.location.pathname.replace('/','').replace(/\..+/,'');
+    var myProfile = false;
     var data = {};
     var vm;
     
@@ -78,4 +82,17 @@
             document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
         }
     });
+    
+    if(typeof localStorage.username !== 'undefined') {
+        myProfile = username === localStorage.username;
+    } else {
+        fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
+            email: localStorage.email,
+            code: localStorage.code
+        })}).then(r => r.json()).then(res => {
+            console.log(res.username);
+            localStorage.username = res.username;
+            myProfile = username === localStorage.username;
+        });
+    }
 </script>

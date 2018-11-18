@@ -26,6 +26,14 @@ header {
     right: 0;
     padding: 1em;
     background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .btn {
+    font-size: 1em;
+    margin: 0 0.5em;
 }
 
 section {

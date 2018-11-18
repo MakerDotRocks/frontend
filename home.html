@@ -10,6 +10,10 @@
     <body class="home">
         <header>
             <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+            <nav>
+                <a class="btn view-profile" href="#">View profile</a>
+                <a class="btn" href="/logout">Log out</a>
+            </nav>
         </header>
         <section class="hero">
             <form action="javascript:void(0)" onsubmit="submitForm()">
@@ -47,6 +51,7 @@
                 elem.value = res[Object.keys(res)[i]];
             }
         }
+        document.querySelector('.btn.view-profile').href = '/' + res.username;
     });
     
     function submitForm() {
