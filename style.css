@@ -185,6 +185,31 @@ aside.loading {
     z-index: 2;
 }
 
+aside.loading:before {
+    content: '👨‍💻';
+    font-size: 10em;
+    animation: emoji-loader 0.75s infinite linear;
+}
+
+@keyframes emoji-loader {
+    0% { content: '\01F468\0200D\01F4BB' }
+    10% { content: '\01F469\0200D\01F4BB' }
+    20% { content: '\01F468\0200D\01F3A4' }
+    30% { content: '\01F469\0200D\01F3A4' }
+    40% { content: '\01F525' }
+    50% { content: '\01F918' }
+    60% { content: '\01F680' }
+    70% { content: '\01F6A2' }
+    80% { content: '\01F4AA' }
+    90% { content: '\02705' }
+    100% { content: '\01F44C' }
+}
+
+aside.loading h1 {
+    color: var(--sub-color);
+    margin: 0;
+}
+
 body.profile aside.loading {
     background: var(--sub-color-nearly-white);
 }
