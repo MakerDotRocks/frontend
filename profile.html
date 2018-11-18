@@ -81,6 +81,11 @@
         if(data.productHuntImageURL) {
             document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
         }
+    })
+    .catch(err => {
+        document.querySelector('aside.loading').style.background = 'var(--sub-red-color)';
+        document.querySelector('aside.loading h1').style.color = 'white';
+        document.querySelector('aside.loading h1').innerText = 'Error... ' + err;
     });
     
     if(typeof localStorage.username !== 'undefined' && localStorage.username !== 'undefined') {
