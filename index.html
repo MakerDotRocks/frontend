@@ -27,7 +27,7 @@
 
 
 <script>
-    if(typeof localStorage.email !== 'undefined' && typeof localStorage.code !== 'undefined' && localStorage.signedIn == 'true') {
+    if((typeof localStorage.username !== 'undefined' && typeof localStorage.email !== 'undefined') && typeof localStorage.code !== 'undefined' && localStorage.signedIn == 'true') {
         window.location = '/home';
     }
 </script>

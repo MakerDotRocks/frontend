@@ -1,7 +1,14 @@
 <script>
     var URLParams = new URLSearchParams(window.location.search);
     localStorage.signedIn = true;
+    localStorage.username = URLParams.get('username');
     localStorage.email = URLParams.get('email');
     localStorage.code = URLParams.get('code');
-    window.location = '/home';
+    if(URLParams.get('username') === null) {
+        alert('You have used an old login URL. Please log in again (click OK to continue)');
+        localStorage.clear;
+        window.location = '/login';
+    } else {
+        window.location = '/home';
+    }
 </script>

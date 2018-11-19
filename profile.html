@@ -92,7 +92,7 @@
         myProfile = username === localStorage.username;
     } else {
         fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
-            email: localStorage.email,
+            username: localStorage.username,
             code: localStorage.code
         })}).then(r => r.json()).then(res => {
             console.log(res.username);
