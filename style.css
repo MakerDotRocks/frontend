@@ -343,6 +343,20 @@ body.profile aside.loading {
         display: none;
     }
     
+    .hero {
+        font-size: 0.7em;
+    }
+    .horizontal-container {
+        flex-wrap: wrap;
+    }
+    .hero .horizontal-container {
+        margin-top: 2em;
+    }
+    .horizontal-container .btn {
+        margin: 0.4em;
+        width: 100%;
+    }
+    
     .profile-grid {
         grid-template-columns: 100%;
     }
