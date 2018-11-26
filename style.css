@@ -356,6 +356,9 @@ body.profile aside.loading {
         margin: 0.4em;
         width: 100%;
     }
+    body.landing-page .hero .horizontal-container .btn.livestream-link {
+        order: 3;
+    }
     
     body.home form label {
         display: block;
