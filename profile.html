@@ -7,13 +7,14 @@
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="img/emoji.png">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body class="profile">
         <div id="app">
             <link v-if="typeof productHuntImageURL !== 'undefined'" rel="shortcut icon" v-bind:href="productHuntImageURL">
-            <header>
-                <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> maker.rocks</a></h1>
+            <header v-bind:class="myProfile ? 'contains-nav' : ''">
+                <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> <span class="logo-text">maker.rocks</span></a></h1>
                 <nav v-if="myProfile">
                     <a class="btn" href="/home">Edit profile</a>
                 </nav>

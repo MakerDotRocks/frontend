@@ -65,10 +65,15 @@ h1.logo {
 h1.logo a {
     color: var(--theme-color);
     text-decoration: none;
+    display: inline-flex;
 }
 
 h1.logo img {
     height: 1em;
+}
+
+h1.logo .logo-text {
+    margin-left: 0.3em;
 }
 
 .hero h2 {
@@ -230,7 +235,7 @@ body.profile aside.loading {
 .profile-grid {
     padding: 2em;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: calc(50% - 1em) calc(50% - 1em);
     grid-gap: 2em;
 }
 
@@ -238,6 +243,8 @@ body.profile aside.loading {
     background: white;
     padding: 2em;
     border-radius: 15px;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .profile-grid section h2 {
@@ -265,6 +272,11 @@ body.profile aside.loading {
     font-weight: 600;
     font-size: 4em;
     margin: 0;
+}
+
+.profile-grid section.main-info .profile-text .social-links {
+    line-height: 2em;
+    margin-top: 0.5em;
 }
 
 .profile-grid section.main-info .profile-text .social-links a {
@@ -326,6 +338,27 @@ body.profile aside.loading {
     font-weight: normal;
 }
 
-* {
-    transition: all 0.2s;
+@media screen and (max-width: 700px) {
+    header.contains-nav .logo-text {
+        display: none;
+    }
+    
+    .profile-grid {
+        grid-template-columns: 100%;
+    }
+    .profile-grid section.main-info {
+        grid-column: 1/2;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    .profile-grid section.main-info .profile-text {
+        margin-left: 0;
+        margin-top: 2em;
+    }
+    .profile-grid section.products {
+        grid-row: 2/3; /* Show above tasks */
+    }
 }
+
+* { transition: all 0.2s }
