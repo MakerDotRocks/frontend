@@ -357,6 +357,13 @@ body.profile aside.loading {
         width: 100%;
     }
     
+    body.home form label {
+        display: block;
+    }
+    body.home form label input {
+        margin-top: 1em;
+    }
+    
     .profile-grid {
         grid-template-columns: 100%;
     }
