@@ -343,13 +343,13 @@ body.profile aside.loading {
         display: none;
     }
     
-    body.home .hero {
+    body.landing-page .hero {
         font-size: 0.7em;
     }
     .horizontal-container {
         flex-wrap: wrap;
     }
-    body.home .hero .horizontal-container {
+    body.landing-page .hero .horizontal-container {
         margin-top: 2em;
     }
     .horizontal-container .btn {
