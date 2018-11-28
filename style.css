@@ -12,6 +12,7 @@
     --sub-color-darker: #575757;
     --sub-color-nearly-white: #f5f5f5;
     --sub-red-color: hsl(0, 69%, 59%);
+    --link-color: #2196F3;
 }
 
 body {
@@ -304,6 +305,12 @@ body.profile aside.loading {
 .profile-grid section.tasks .task {
     margin: 0.75em 0;
     line-height: 1.75em;
+}
+
+.profile-grid section.tasks .task a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-weight: 500;
 }
 
 .profile-grid section.products .product {

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="img/emoji.png">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+        <script src="https://rawcdn.githack.com/nfrasser/linkify-shim/a6caa8d338d07551c842f4f6f71a1015948542bb/linkify.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
@@ -92,6 +93,12 @@
         if(data.productHuntImageURL) {
             document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
         }
+        
+        var taskElements = document.querySelectorAll('.profile-grid section.tasks .task');
+        for(var i = 0; i < taskElements.length; i++) {
+            var taskElement = taskElements[i];
+            taskElement.innerHTML = addLinks(taskElement.innerText);
+        }
     })
     .catch(err => {
         document.querySelector('aside.loading').style.background = 'var(--sub-red-color)';
@@ -111,6 +118,16 @@
             myProfile = username === localStorage.username;
         });
     }
+    
+    function addLinks(string) {
+        var links = linkify.find(string);
+        for(var i = 0; i < links.length; i++) {
+            var link = links[i];
+            string = string.replace(link.value, `<a href="${link.href}" target="_blank">${link.value}</a>`);
+        }
+        return string;
+    }
+    
 </script>
 
 
