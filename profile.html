@@ -59,7 +59,7 @@
 </html>
 
 <script>
-    var username = window.location.pathname.replace('/','').replace('.html','');
+    var username = window.location.hostname !== 'localhost' ? window.location.pathname.replace('/','').replace('.html','') : 'ethan';
     var myProfile = false;
     var data = {};
     var vm;
