@@ -252,6 +252,13 @@ body.profile aside.loading {
     font-size: 1.75em;
 }
 
+.profile-grid section h3.sub {
+    font-size: 1.3em;
+    font-weight: normal;
+    color: var(--sub-color);
+    margin-top: -1em;
+}
+
 .profile-grid section.main-info {
     display: flex;
     align-items: center;

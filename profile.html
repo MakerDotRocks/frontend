@@ -43,7 +43,8 @@
                 </section>
                 <section class="tasks" v-if="typeof makerlogTasks !== 'undefined' || typeof wipTasks !== 'undefined'">
                     <h2>Recently completed tasks</h2>
-                    <div class="task" v-for="task in (typeof makerlogTasks !== 'undefined' && makerlogTasks.length > 0 ? makerlogTasks : (typeof wipTasks !== 'undefined' ? wipTasks : []))">&#x2705; {{task.message}}</div>
+                    <h3 class="streak sub" v-if="taskStreak > 0">&#x1F525; {{taskStreak}} day streak!!</h3>
+                    <div class="task" v-for="task in tasks">&#x2705; {{task.message}}</div>
                 </section>
                 <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
                     <h2>Products launched</h2>
@@ -71,6 +72,12 @@
         for(var i = 0; i < Object.keys(res).length; i++) {
             data[Object.keys(res)[i]] = res[Object.keys(res)[i]];
         }
+        
+        // Calculate additional data keys here
+        
+        data.tasks = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogTasks : (typeof data.wipTasks !== 'undefined' ? data.wipTasks : []));
+        
+        data.taskStreak = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogStreak : (typeof data.wipTasks !== 'undefined' ? data.wipStreak : []));
 
         vm = new Vue({
             el: '#app',
