@@ -307,7 +307,7 @@ body.profile aside.loading {
 }
 
 .profile-grid section.products .product {
-    margin: 1em;
+    margin: 1em 0;
 }
 
 .profile-grid section.products .product * {

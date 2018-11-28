@@ -48,6 +48,7 @@
                 </section>
                 <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
                     <h2>Products launched</h2>
+                    <h3 class="total-upvotes sub">&#x1F53C; {{productHuntTotalVotes}} total upvotes</h3>
                     <div class="product" v-for="product in productHuntProducts">
                         <a v-bind:href="product.websiteURL" target="_blank"><h3 class="name"><img v-bind:src="product.thumbnailURL" class="thumbnail">{{product.name}} <span class="votes"><i class="fa fa-caret-up"></i> {{product.votes}}</span></h3></a>
                         <h4 class="tagline">{{product.tagline}}</h4>
