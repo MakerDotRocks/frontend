@@ -191,7 +191,7 @@ body.profile header h1.logo {
     font-size: 1.5em;
 }
 
-aside.loading {
+aside.loading, aside.not-found {
     position: fixed;
     top: 0;
     left: 0;
@@ -230,6 +230,10 @@ aside.loading h1 {
 
 body.profile aside.loading {
     background: var(--sub-color-nearly-white);
+}
+
+aside.not-found {
+    z-index: 3;
 }
 
 .profile-grid {

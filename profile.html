@@ -20,6 +20,11 @@
                     <a class="btn" href="/home">Edit profile</a>
                 </nav>
             </header>
+            <aside class="not-found hero" style="display: none">
+                <h1 class="logo">Maker not found &#x1F914;</h1>
+                <h2>This person does not exist! Maybe they're a ghost&hellip;</h2>
+                <a class="btn" href="/">Back to home</a>
+            </aside>
             <aside class="loading" v-bind:style="`opacity: 0; pointer-events: none`">
                 <h1>Loading a cool maker!</h1>
             </aside>
@@ -71,33 +76,39 @@
         username: username
     })}).then(r => r.json()).then(res => {
         console.log(res);
-        for(var i = 0; i < Object.keys(res).length; i++) {
-            data[Object.keys(res)[i]] = res[Object.keys(res)[i]];
-        }
         
-        // Calculate additional data keys here
         
-        data.tasks = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogTasks : (typeof data.wipTasks !== 'undefined' ? data.wipTasks : []));
-        
-        data.taskStreak = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogStreak : (typeof data.wipTasks !== 'undefined' ? data.wipStreak : []));
+        if(res.code === 'USER_NOT_FOUND') {
+            document.querySelector('.not-found').style.display = 'flex';
+        } else {
+            for(var i = 0; i < Object.keys(res).length; i++) {
+                data[Object.keys(res)[i]] = res[Object.keys(res)[i]];
+            }
 
-        vm = new Vue({
-            el: '#app',
-            data: data
-        });
-        
-        if(data.productHuntName) {
-            document.head.querySelector('title').innerHTML = `${data.productHuntName} &mdash; maker.rocks &#x1F918;`;
-        }
-        
-        if(data.productHuntImageURL) {
-            document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
-        }
-        
-        var taskElements = document.querySelectorAll('.profile-grid section.tasks .task');
-        for(var i = 0; i < taskElements.length; i++) {
-            var taskElement = taskElements[i];
-            taskElement.innerHTML = addLinks(taskElement.innerText);
+            // Calculate additional data keys here
+
+            data.tasks = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogTasks : (typeof data.wipTasks !== 'undefined' ? data.wipTasks : []));
+
+            data.taskStreak = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogStreak : (typeof data.wipTasks !== 'undefined' ? data.wipStreak : []));
+
+            vm = new Vue({
+                el: '#app',
+                data: data
+            });
+
+            if(data.productHuntName) {
+                document.head.querySelector('title').innerHTML = `${data.productHuntName} &mdash; maker.rocks &#x1F918;`;
+            }
+
+            if(data.productHuntImageURL) {
+                document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
+            }
+
+            var taskElements = document.querySelectorAll('.profile-grid section.tasks .task');
+            for(var i = 0; i < taskElements.length; i++) {
+                var taskElement = taskElements[i];
+                taskElement.innerHTML = addLinks(taskElement.innerText);
+            }
         }
     })
     .catch(err => {
