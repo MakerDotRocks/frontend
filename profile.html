@@ -104,6 +104,10 @@
             if(data.productHuntImageURL) {
                 document.head.querySelector('link[rel="shortcut icon"]').href = data.productHuntImageURL;
             }
+            
+            if(data.profileHue) {
+                document.querySelector('html').setAttribute('style', `--theme-hue: ${data.profileHue}; ${document.querySelector('html').getAttribute('style')}`);
+            }
 
             var taskElements = document.querySelectorAll('.profile-grid section.tasks .task');
             for(var i = 0; i < taskElements.length; i++) {

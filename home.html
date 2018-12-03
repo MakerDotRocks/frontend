@@ -30,6 +30,10 @@
                 <label>Buy Me A Coffee username &nbsp;<input name="bmcUsername" type="text" placeholder="jijo"></label>
                 <label>YouTube URL &nbsp;<input name="youtubeURL" type="text" placeholder="https://www.youtube.com/channel/UCms6bsRIHFSscZhxK0-K-rQ"></label>
                 <label>Your URL &nbsp;<input name="personalWebsite" type="text" placeholder="https://ethan.link"></label>
+                <label>Profile color &nbsp;<div class="hue-picker-wrapper">
+                    <div class="hue-picker-preview">45</div>
+                    <input name="profileHue" type="range" min="0" max="360" class="hue-picker" value="45" oninput="updateHuePreview()">
+                </div></label>
                 <button type="submit" class="btn">Save settings</button>
             </form>
         </section>
@@ -40,9 +44,20 @@
 <script src="https://unpkg.com/notie"></script>
 
 <script>
+    
     if(localStorage.signedIn !== 'true') {
         window.location = '/';
     }
+    
+    // Start HSL
+    
+    var hslGradientStops = [];
+    for(var i = 0; i < 360; i++) {
+        hslGradientStops.push(`hsl(${i}, 100%, 69%)`);
+    }
+    document.body.setAttribute('style',`--hue-gradient: linear-gradient(90deg,${hslGradientStops.join(',')}); ${document.body.getAttribute('style')}`);
+    
+    // End HSL
     
     fetch('https://functions.maker.rocks/getmetadata', {method: 'POST', body: JSON.stringify({
         username: localStorage.username,
@@ -56,6 +71,7 @@
             }
         }
         document.querySelector('.btn.view-profile').href = '/' + res.username;
+        updateHuePreview();
     });
     
     function submitForm() {
@@ -78,6 +94,13 @@
             notie.alert({ type: 1, text: 'Saved!'});
         });
     }
+    
+    function updateHuePreview() {
+        document.querySelector('.hue-picker-preview').style.background = `hsl(${document.querySelector('.hue-picker').value}, 100%, 69%)`;
+		document.querySelector('.hue-picker-preview').style.color = `hsl(${document.querySelector('.hue-picker').value}, 100%, 30%)`;
+		document.querySelector('.hue-picker-preview').innerHTML = document.querySelector('.hue-picker').value;
+    }
+    
 </script>
 
 

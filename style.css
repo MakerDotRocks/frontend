@@ -6,8 +6,9 @@
 }
 
 :root {
-    --theme-color: hsl(45, 100%, 69%);
-    --theme-color-darker: hsl(45, 100%, 30%);
+    --theme-hue: 45;
+    --theme-color: hsl(var(--theme-hue), 100%, 69%);
+    --theme-color-darker: hsl(var(--theme-hue), 100%, 30%);
     --sub-color: #979797;
     --sub-color-darker: #575757;
     --sub-color-nearly-white: #f5f5f5;
@@ -70,6 +71,7 @@ h1.logo a {
 
 h1.logo img {
     height: 1em;
+    filter: hue-rotate(calc((var(--theme-hue) - 45)*1deg));
 }
 
 h1.logo .logo-text {
@@ -151,6 +153,36 @@ input[type="text"]:focus, input[type="email"]:focus {
 
 input::placeholder {
     color: var(--sub-color);
+}
+
+input[type="range"] {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+input[type="range"].hue-picker {
+    background: var(--hue-gradient);
+    -webkit-appearance: none;
+    height: 2.5em;
+}
+
+.hue-picker-wrapper {
+    display: flex;
+}
+
+.hue-picker-preview {
+    width: 2.5em;
+    height: 2.5em;
+    background: var(--theme-color);
+    color: var(--theme-color-darker);
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="range"]:focus {
+    outline: none;
 }
 
 .horizontal-container {
@@ -383,7 +415,7 @@ aside.not-found {
     body.home form label {
         display: block;
     }
-    body.home form label input {
+    body.home form label input, body.home form label .hue-picker-preview {
         margin-top: 1em;
     }
     
