@@ -317,22 +317,22 @@ aside.not-found {
     margin: 0;
 }
 
-.profile-grid section.main-info .profile-text .social-links {
+.profile-grid section.main-info .profile-text .profile-links {
     line-height: 2em;
     margin-top: 0.5em;
 }
 
-.profile-grid section.main-info .profile-text .social-links a {
+.profile-grid section.main-info .profile-text .profile-links a {
     color: inherit;
     text-decoration: none;
     margin: 0 0.2em;
 }
 
-.profile-grid section.main-info .profile-text .social-links a .icon {
+.profile-grid section.main-info .profile-text .profile-links a .icon {
     font-size: 2.5em;
 }
 
-.profile-grid section.main-info .profile-text .social-links a .icon.emoji {
+.profile-grid section.main-info .profile-text .profile-links a .icon.emoji {
     filter: brightness(0.4);
     opacity: .65;
 }

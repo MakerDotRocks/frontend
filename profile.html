@@ -33,7 +33,7 @@
                     <img v-if="typeof productHuntImageURL !== 'undefined'" v-bind:src="productHuntImageURL" class="profile-image">
                     <div class="profile-text">
                         <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
-                        <div class="social-links">
+                        <div class="profile-links">
                             <a v-if="typeof personalWebsite !== 'undefined'" v-bind:href="personalWebsite" target="_blank"><i class="icon fa fa-globe"></i></a>
                             <a v-if="typeof twitterUsername !== 'undefined'" v-bind:href="`https://twitter.com/${twitterUsername}`" target="_blank"><i class="icon fab fa-twitter"></i></a>
                             <a v-if="typeof productHuntUsername !== 'undefined'" v-bind:href="`https://www.producthunt.com/@${productHuntUsername}`" target="_blank"><i class="icon fab fa-product-hunt"></i></a>
