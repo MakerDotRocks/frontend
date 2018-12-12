@@ -35,6 +35,7 @@
                         <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
                         <div class="profile-links">
                             <a v-if="typeof personalWebsite !== 'undefined'" v-bind:href="personalWebsite" target="_blank"><i class="icon fa fa-globe"></i></a>
+                            <a v-if="typeof personalBlog !== 'undefined'" v-bind:href="personalBlog" target="_blank"><i class="icon fa fa-pencil-alt"></i></a>
                             <a v-if="typeof twitterUsername !== 'undefined'" v-bind:href="`https://twitter.com/${twitterUsername}`" target="_blank"><i class="icon fab fa-twitter"></i></a>
                             <a v-if="typeof productHuntUsername !== 'undefined'" v-bind:href="`https://www.producthunt.com/@${productHuntUsername}`" target="_blank"><i class="icon fab fa-product-hunt"></i></a>
                             <a v-if="typeof wipUsername !== 'undefined'" v-bind:href="`https://wip.chat/@${wipUsername}`" target="_blank"><span class="emoji icon">&#x1F6A7;</span></a>
@@ -45,6 +46,7 @@
                             <a v-if="typeof telegramUsername !== 'undefined'" v-bind:href="`https://t.me/${telegramUsername}`" target="_blank"><i class="icon fab fa-telegram"></i></a>
                             <a v-if="typeof patreonUsername !== 'undefined'" v-bind:href="`https://www.patreon.com/${patreonUsername}`" target="_blank"><i class="icon fab fa-patreon"></i></a>
                             <a v-if="typeof bmcUsername !== 'undefined'" v-bind:href="`https://www.buymeacoffee.com/${bmcUsername}`" target="_blank"><i class="icon fa fa-coffee"></i></a>
+                            <a v-if="typeof publicEmail !== 'undefined'" v-bind:href="`mailto:${publicEmail}`" target="_blank"><i class="icon fa fa-envelope"></i></a>
                         </div>
                     </div>
                 </section>
