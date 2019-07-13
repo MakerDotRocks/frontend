@@ -13,7 +13,7 @@
 
     <body class="profile">
         <div id="app">
-            <link v-if="productHuntImageURL || twitterUsername" rel="shortcut icon" v-bind:href="productHuntImageURL || `https://avatars.io/twitter/${twitterUsername}`">
+            <link v-if="data.productHuntImageURL || data.twitterUsername" rel="shortcut icon" v-bind:href="data.productHuntImageURL || `https://avatars.io/twitter/${data.twitterUsername}`">
             <header v-bind:class="myProfile ? 'contains-nav' : ''">
                 <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> <span class="logo-text">maker.rocks</span></a></h1>
                 <nav v-if="myProfile">
