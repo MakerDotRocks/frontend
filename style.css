@@ -325,6 +325,14 @@ aside.not-found {
     margin-bottom: 0.5em;
 }
 
+.profile-grid section.main-info .profile-text p.bio > :first-child {
+    margin-top: 0;
+}
+
+.profile-grid section.main-info .profile-text p.bio > :last-child {
+    margin-bottom: 0;
+}
+
 .profile-grid section.main-info .profile-text .profile-links {
     line-height: 2em;
     margin-top: 0.5em;
