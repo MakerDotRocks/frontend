@@ -33,7 +33,7 @@
                 <label>Your website URL &nbsp;<input name="personalWebsite" type="text" placeholder="https://ethan.link"></label>
                 <label>Your blog URL &nbsp;<input name="personalBlog" type="text" placeholder="https://ethan.link/blog"></label>
                 <label>Public email address &nbsp;<input name="publicEmail" type="email" placeholder="me@ethan.link"></label>
-                <label>Bio (max 500 chars) &nbsp;<div><textarea name="bio" placeholder="Markdown supported"></textarea><div class="char-count"></div></div></label>
+                <label>Bio (max 500 chars) &nbsp;<div><textarea name="bio" placeholder="Markdown supported" oninput="updateBioCharCount()"></textarea><div class="char-count"></div></div></label>
                 <label>Profile color &nbsp;<div class="hue-picker-wrapper">
                     <div class="hue-picker-preview">45</div>
                     <input name="profileHue" type="range" min="0" max="359" class="hue-picker" value="45" oninput="updateHuePreview()">
@@ -76,6 +76,7 @@
         }
         document.querySelector('.btn.view-profile').href = '/' + res.username;
         updateHuePreview();
+        updateBioCharCount();
     });
     
     function submitForm() {
@@ -105,12 +106,10 @@
 		document.querySelector('.hue-picker-preview').innerHTML = document.querySelector('.hue-picker').value;
     }
     
-    window.addEventListener('DOMContentLoaded', function(){
-        document.querySelector('textarea[name="bio"]').addEventListener('input', function(e) {
-            e.target.nextSibling.innerText = `${e.target.value.length} characters`;
-        })
-    })
-    
+    function updateBioCharCount() {
+        const el = document.querySelector('textarea[name="bio"]');
+        el.nextSibling.innerText = `${el.value.length} characters`;
+    }
 </script>
 
 
