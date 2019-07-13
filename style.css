@@ -144,6 +144,8 @@ input[type="text"], input[type="email"], textarea {
     border: 2px solid var(--sub-color);
     font-size: 1.1em;
     padding: 0.6rem;
+    font-family: inherit;
+    resize: vertical;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
