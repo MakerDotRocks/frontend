@@ -321,8 +321,8 @@ aside.not-found {
 
 .profile-grid section.main-info .profile-text p.bio {
     font-size: 1.15em;
-    margin-top: 0;
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 .profile-grid section.main-info .profile-text p.bio > :first-child {
