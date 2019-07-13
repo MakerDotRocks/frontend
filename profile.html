@@ -30,7 +30,7 @@
             </aside>
             <main class="profile-grid">
                 <section class="main-info">
-                    <img v-if="typeof productHuntImageURL !== 'undefined'" v-bind:src="productHuntImageURL" class="profile-image">
+                    <img v-if="data.productHuntImageURL || data.twitterUsername" v-bind:src="data.productHuntImageURL || `https://avatars.io/twitter/${data.twitterUsername}`" class="profile-image">
                     <div class="profile-text">
                         <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
                         <div class="profile-links">
