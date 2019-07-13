@@ -109,6 +109,7 @@
     function updateBioCharCount() {
         const el = document.querySelector('textarea[name="bio"]');
         el.nextSibling.innerText = `${el.value.length} characters`;
+        el.style.color = el.value.length > 500 ? 'var(--sub-red-color)' : '';
     }
 </script>
 
