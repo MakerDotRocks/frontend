@@ -333,6 +333,10 @@ aside.not-found {
     margin-bottom: 0;
 }
 
+.profile-grid section.main-info .profile-text p.bio a {
+    color: inherit;
+}
+
 .profile-grid section.main-info .profile-text .profile-links {
     line-height: 2em;
     margin-top: 0.5em;
