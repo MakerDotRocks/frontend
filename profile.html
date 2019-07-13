@@ -32,7 +32,7 @@
                 <section class="main-info">
                     <img v-if="data.productHuntImageURL || data.twitterUsername" v-bind:src="data.productHuntImageURL || `https://avatars.io/twitter/${data.twitterUsername}`" class="profile-image">
                     <div class="profile-text">
-                        <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
+                        <h1 class="name" v-if="data.productHuntName || data.twitterName">{{data.productHuntName || data.twitterName}}</h1>
                         <div class="profile-links">
                             <a v-if="typeof personalWebsite !== 'undefined'" v-bind:href="personalWebsite" target="_blank"><i class="icon fa fa-globe"></i></a>
                             <a v-if="typeof personalBlog !== 'undefined'" v-bind:href="personalBlog" target="_blank"><i class="icon fa fa-pencil-alt"></i></a>
