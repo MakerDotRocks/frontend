@@ -69,7 +69,7 @@
     })}).then(r => r.json()).then(res => {
         console.log(res);
         for(var i = 0; i < Object.keys(res).length; i++) {
-            var elem = document.querySelector(`input[name="${Object.keys(res)[i]}"]`);
+            var elem = document.querySelector(`label > *[name="${Object.keys(res)[i]}"]`);
             if(elem !== null) {
                 elem.value = res[Object.keys(res)[i]];
             }
