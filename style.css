@@ -317,6 +317,12 @@ aside.not-found {
     margin: 0;
 }
 
+.profile-grid section.main-info .profile-text p.bio {
+    font-size: 1.15em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
 .profile-grid section.main-info .profile-text .profile-links {
     line-height: 2em;
     margin-top: 0.5em;
