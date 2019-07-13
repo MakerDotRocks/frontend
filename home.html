@@ -87,6 +87,9 @@
             metadataInputs[i].value = metadataInputs[i].value.replace(/^@/,'');
             metadata[metadataInputs[i].getAttribute('name')] = metadataInputs[i].value;
         }
+        if (metadata.bio && metadata.bio.length > 500) {
+            delete metadata.bio;
+        }
         console.log(metadata);
         
         fetch('https://functions.maker.rocks/editmetadata', {method: 'POST', body: JSON.stringify({
