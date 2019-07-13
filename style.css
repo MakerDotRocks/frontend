@@ -168,6 +168,13 @@ input[type="range"].hue-picker {
     height: 2.5em;
 }
 
+.char-count {
+    text-align: right;
+    margin-left: 0.55rem;
+    margin-top: 0.3em;
+    color: var(--sub-color);
+}
+
 .hue-picker-wrapper {
     display: flex;
 }
