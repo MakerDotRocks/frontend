@@ -384,20 +384,24 @@ aside.not-found {
     margin-top: 0.5em;
 }
 
-.profile-grid section.products .product {
+.profile-grid section.products .product,
+.profile-grid section.repos .repo {
     margin: 1em 0;
 }
 
-.profile-grid section.products .product * {
+.profile-grid section.products .product *,
+.profile-grid section.repos .repo * {
     margin: 0;
 }
 
-.profile-grid section.products .product a {
+.profile-grid section.products .product a,
+.profile-grid section.repos .repo a {
     text-decoration: none;
     color: var(--subtle-color-darker);
 }
 
-.profile-grid section.products .product .name {
+.profile-grid section.products .product .name,
+.profile-grid section.repos .repo .name {
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -412,14 +416,16 @@ aside.not-found {
     margin-right: 0.5em;
 }
 
-.profile-grid section.products .product .votes {
+.profile-grid section.products .product .votes,
+.profile-grid section.repos .repo .stars {
     font-size: 0.9rem;
     font-weight: normal;
     color: var(--sub-color);
     margin-left: 1em;
 }
 
-.profile-grid section.products .product .tagline {
+.profile-grid section.products .product .tagline,
+.profile-grid section.repos .repo .description {
     font-weight: normal;
 }
 

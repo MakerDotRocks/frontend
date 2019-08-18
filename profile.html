@@ -61,12 +61,20 @@
                         <img class="task-image" v-if="task.image" :src="task.image">
                     </div>
                 </section>
-                <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
+                <section class="products" v-if="typeof productHuntProducts !== 'undefined' && productHuntProducts.length > 0">
                     <h2>Products launched</h2>
-                    <h3 class="total-upvotes sub" v-if="productHuntProducts.length > 0">&#x1F53C; {{productHuntTotalVotes}} total upvotes &bull; {{productHuntAverageVotes}} average</h3>
+                    <h3 class="total-upvotes sub">&#x1F53C; {{productHuntTotalVotes}} total upvotes &bull; {{productHuntAverageVotes}} average</h3>
                     <div class="product" v-for="product in productHuntProducts">
                         <a v-bind:href="product.websiteURL" target="_blank"><h3 class="name"><img v-bind:src="product.thumbnailURL" class="thumbnail">{{product.name}} <span class="votes"><i class="fa fa-caret-up"></i> {{product.votes}}</span></h3></a>
                         <h4 class="tagline">{{product.tagline}}</h4>
+                    </div>
+                </section>
+                <section class="repos" v-if="typeof gitHubRepos !== 'undefined' && gitHubRepos.length > 0">
+                    <h2>GitHub Repositories</h2>
+                    <h3 class="total-stars sub">&#x1F31F; {{gitHubTotalStars}} total stars &bull; {{gitHubAverageStars}} average</h3>
+                    <div class="repo" v-for="repo in gitHubRepos">
+                        <a v-bind:href="repo.url" target="_blank"><h3 class="name">{{repo.name}} <span class="stars"><i class="fa fa-star"></i> {{repo.stars}}</span></h3></a>
+                        <h4 class="description">{{repo.description && repo.description.length > 0 ? repo.description : `No description.`}}</h4>
                     </div>
                 </section>
             </main>
