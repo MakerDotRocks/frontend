@@ -378,6 +378,12 @@ aside.not-found {
     border-radius: 0;
 }
 
+.profile-grid section.tasks .task .task-image {
+    width: 100%;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 0.5em;
+}
+
 .profile-grid section.products .product {
     margin: 1em 0;
 }
