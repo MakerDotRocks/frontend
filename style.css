@@ -123,7 +123,7 @@ form label.error {
     color: var(--sub-red-color);
 }
 
-form label input {
+form label input, form label textarea {
     width: 100%;
     color: var(--sub-color-darker);
 }
@@ -140,18 +140,20 @@ form .btn:focus {
     border: 2px solid var(--theme-color-darker);
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], textarea {
     border: 2px solid var(--sub-color);
     font-size: 1.1em;
     padding: 0.6rem;
+    font-family: inherit;
+    resize: vertical;
 }
 
-input[type="text"]:focus, input[type="email"]:focus {
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
     outline: none;
     border-color: var(--sub-color-darker);
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
     color: var(--sub-color);
 }
 
@@ -164,6 +166,13 @@ input[type="range"].hue-picker {
     background: var(--hue-gradient);
     -webkit-appearance: none;
     height: 2.5em;
+}
+
+.char-count {
+    text-align: right;
+    margin-left: 0.55rem;
+    margin-top: 0.3em;
+    color: var(--sub-color);
 }
 
 .hue-picker-wrapper {
@@ -195,7 +204,7 @@ body.home form label {
     justify-content: space-between;
 }
 
-body.home form label input {
+body.home form label input, body.home form label textarea {
     width: 15em;
     margin-left: 0.5em;
 }
@@ -317,6 +326,24 @@ aside.not-found {
     margin: 0;
 }
 
+.profile-grid section.main-info .profile-text p.bio {
+    font-size: 1.15em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.profile-grid section.main-info .profile-text p.bio > :first-child {
+    margin-top: 0;
+}
+
+.profile-grid section.main-info .profile-text p.bio > :last-child {
+    margin-bottom: 0;
+}
+
+.profile-grid section.main-info .profile-text p.bio a {
+    color: inherit;
+}
+
 .profile-grid section.main-info .profile-text .profile-links {
     line-height: 2em;
     margin-top: 0.5em;
@@ -415,7 +442,7 @@ aside.not-found {
     body.home form label {
         display: block;
     }
-    body.home form label input, body.home form label .hue-picker-preview {
+    body.home form label input, body.home form label textarea, body.home form label .hue-picker-preview {
         margin-top: 1em;
     }
     

@@ -29,10 +29,12 @@
                 <label>Patreon username &nbsp;<input name="patreonUsername" type="text" placeholder="andreyazimov"></label>
                 <label>Buy Me A Coffee username &nbsp;<input name="bmcUsername" type="text" placeholder="jijo"></label>
                 <label>GitHub username &nbsp;<input name="gitHubUsername" type="text" placeholder="mojombo"></label>
+                <label>LinkedIn username &nbsp;<input name="linkedinUsername" type="text" placeholder="konstantin"></label>
                 <label>YouTube URL &nbsp;<input name="youtubeURL" type="text" placeholder="https://www.youtube.com/channel/UCms6bsRIHFSscZhxK0-K-rQ"></label>
                 <label>Your website URL &nbsp;<input name="personalWebsite" type="text" placeholder="https://ethan.link"></label>
                 <label>Your blog URL &nbsp;<input name="personalBlog" type="text" placeholder="https://ethan.link/blog"></label>
                 <label>Public email address &nbsp;<input name="publicEmail" type="email" placeholder="me@ethan.link"></label>
+                <label>Bio (max 500 chars) &nbsp;<div><textarea name="bio" placeholder="Markdown supported" oninput="updateBioCharCount()"></textarea><div class="char-count"></div></div></label>
                 <label>Profile color &nbsp;<div class="hue-picker-wrapper">
                     <div class="hue-picker-preview">45</div>
                     <input name="profileHue" type="range" min="0" max="359" class="hue-picker" value="45" oninput="updateHuePreview()">
@@ -68,22 +70,26 @@
     })}).then(r => r.json()).then(res => {
         console.log(res);
         for(var i = 0; i < Object.keys(res).length; i++) {
-            var elem = document.querySelector(`input[name="${Object.keys(res)[i]}"]`);
+            var elem = document.querySelector(`label [name="${Object.keys(res)[i]}"]`);
             if(elem !== null) {
                 elem.value = res[Object.keys(res)[i]];
             }
         }
         document.querySelector('.btn.view-profile').href = '/' + res.username;
         updateHuePreview();
+        updateBioCharCount();
     });
     
     function submitForm() {
         document.querySelector('button[type="submit"]').innerHTML = 'Processing...';
-        var metadataInputs = document.querySelectorAll('input[name]');
+        var metadataInputs = document.querySelectorAll('input[name], textarea[name]');
         var metadata = {};
         for(var i = 0; i < metadataInputs.length; i++) {
             metadataInputs[i].value = metadataInputs[i].value.replace(/^@/,'');
             metadata[metadataInputs[i].getAttribute('name')] = metadataInputs[i].value;
+        }
+        if (metadata.bio && metadata.bio.length > 500) {
+            delete metadata.bio;
         }
         console.log(metadata);
         
@@ -104,6 +110,11 @@
 		document.querySelector('.hue-picker-preview').innerHTML = document.querySelector('.hue-picker').value;
     }
     
+    function updateBioCharCount() {
+        const el = document.querySelector('textarea[name="bio"]');
+        el.nextSibling.innerText = `${el.value.length} characters`;
+        el.nextSibling.style.color = el.value.length > 500 ? 'var(--sub-red-color)' : '';
+    }
 </script>
 
 

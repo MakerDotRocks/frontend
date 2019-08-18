@@ -13,7 +13,7 @@
 
     <body class="profile">
         <div id="app">
-            <link v-if="typeof productHuntImageURL !== 'undefined'" rel="shortcut icon" v-bind:href="productHuntImageURL">
+            <link v-if="data.productHuntImageURL || data.twitterUsername" rel="shortcut icon" v-bind:href="data.productHuntImageURL || `https://avatars.io/twitter/${data.twitterUsername}`">
             <header v-bind:class="myProfile ? 'contains-nav' : ''">
                 <h1 class="logo"><a href="/"><img src="img/emoji.png" alt=""> <span class="logo-text">maker.rocks</span></a></h1>
                 <nav v-if="myProfile">
@@ -30,9 +30,10 @@
             </aside>
             <main class="profile-grid">
                 <section class="main-info">
-                    <img v-if="typeof productHuntImageURL !== 'undefined'" v-bind:src="productHuntImageURL" class="profile-image">
+                    <img v-if="data.productHuntImageURL || data.twitterUsername" v-bind:src="data.productHuntImageURL || `https://avatars.io/twitter/${data.twitterUsername}`" class="profile-image">
                     <div class="profile-text">
-                        <h1 class="name" v-if="typeof productHuntName !== 'undefined'">{{productHuntName}}</h1>
+                        <h1 class="name" v-if="data.productHuntName || data.twitterName">{{data.productHuntName || data.twitterName}}</h1>
+                        <p class="bio" v-if="data.bio" v-html="data.bio"></p>
                         <div class="profile-links">
                             <a v-if="typeof personalWebsite !== 'undefined'" v-bind:href="personalWebsite" target="_blank"><i class="icon fa fa-globe"></i></a>
                             <a v-if="typeof personalBlog !== 'undefined'" v-bind:href="personalBlog" target="_blank"><i class="icon fa fa-pencil-alt"></i></a>
@@ -47,6 +48,7 @@
                             <a v-if="typeof patreonUsername !== 'undefined'" v-bind:href="`https://www.patreon.com/${patreonUsername}`" target="_blank"><i class="icon fab fa-patreon"></i></a>
                             <a v-if="typeof bmcUsername !== 'undefined'" v-bind:href="`https://www.buymeacoffee.com/${bmcUsername}`" target="_blank"><i class="icon fa fa-coffee"></i></a>
                             <a v-if="typeof gitHubUsername !== 'undefined'" v-bind:href="`https://github.com/${gitHubUsername}`" target="_blank"><i class="icon fab fa-github"></i></a>
+                            <a v-if="typeof linkedinUsername !== 'undefined'" v-bind:href="`https://www.linkedin.com/in/${linkedinUsername}`" target="_blank"><i class="icon fab fa-linkedin"></i></a>
                             <a v-if="typeof publicEmail !== 'undefined'" v-bind:href="`mailto:${publicEmail}`" target="_blank"><i class="icon fa fa-envelope"></i></a>
                         </div>
                     </div>
