@@ -54,7 +54,10 @@
                 <section class="tasks" v-if="typeof makerlogTasks !== 'undefined' || typeof wipTasks !== 'undefined'">
                     <h2>Recently completed tasks</h2>
                     <h3 class="streak sub" v-if="taskStreak > 0">&#x1F525; {{taskStreak}} day streak!!</h3>
-                    <div class="task" v-for="task in tasks">&#x2705; {{task.message}}</div>
+                    <div class="task" v-for="task in tasks">
+                        <span class="task-text">&#x2705; {{task.message}}</span>
+                        <img class="task-image" v-if="task.image" :src="task.image">
+                    </div>
                 </section>
                 <section class="products" v-if="typeof productHuntProducts !== 'undefined'">
                     <h2>Products launched</h2>
