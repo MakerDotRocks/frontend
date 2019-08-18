@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="tasks" v-if="typeof makerlogTasks !== 'undefined' || typeof wipTasks !== 'undefined'">
+                <section class="tasks" v-if="(typeof makerlogTasks !== 'undefined' && makerlogTasks.length > 0) || (typeof wipTasks !== 'undefined' && wipTasks.length > 0)">
                     <h2>Recently completed tasks</h2>
                     <h3 class="streak sub" v-if="taskStreak > 0">&#x1F525; {{taskStreak}} day streak!!</h3>
                     <div class="task" v-for="task in tasks">
