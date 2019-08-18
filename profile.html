@@ -117,7 +117,7 @@
                 document.querySelector('html').setAttribute('style', `--theme-hue: ${data.profileHue}; ${document.querySelector('html').getAttribute('style')}`);
             }
 
-            var taskElements = document.querySelectorAll('.profile-grid section.tasks .task');
+            var taskElements = document.querySelectorAll('.profile-grid section.tasks .task .task-text');
             for(var i = 0; i < taskElements.length; i++) {
                 var taskElement = taskElements[i];
                 taskElement.innerHTML = addLinks(taskElement.innerText);
