@@ -44,6 +44,7 @@
                             <a v-if="typeof twitchUsername !== 'undefined'" v-bind:href="`https://www.twitch.tv/${twitchUsername}`" target="_blank"><i class="icon fab fa-twitch"></i></a>
                             <a v-if="typeof youtubeURL !== 'undefined'" v-bind:href="`${youtubeURL}`" target="_blank"><i class="icon fab fa-youtube"></i></a>
                             <a v-if="typeof mediumUsername !== 'undefined'" v-bind:href="`https://medium.com/@${mediumUsername}`" target="_blank"><i class="icon fab fa-medium"></i></a>
+                            <a v-if="typeof devtoUsername !== 'undefined'" v-bind:href="`https://dev.to/${devtoUsername}`" target="_blank"><i class="icon fab fa-dev"></i></a>
                             <a v-if="typeof telegramUsername !== 'undefined'" v-bind:href="`https://t.me/${telegramUsername}`" target="_blank"><i class="icon fab fa-telegram"></i></a>
                             <a v-if="typeof patreonUsername !== 'undefined'" v-bind:href="`https://www.patreon.com/${patreonUsername}`" target="_blank"><i class="icon fab fa-patreon"></i></a>
                             <a v-if="typeof bmcUsername !== 'undefined'" v-bind:href="`https://www.buymeacoffee.com/${bmcUsername}`" target="_blank"><i class="icon fa fa-coffee"></i></a>
@@ -101,7 +102,7 @@
             for(var i = 0; i < Object.keys(res).length; i++) {
                 data[Object.keys(res)[i]] = res[Object.keys(res)[i]];
             }
-
+            
             // Calculate additional data keys here
 
             data.tasks = (typeof data.makerlogTasks !== 'undefined' && data.makerlogTasks.length > 0 ? data.makerlogTasks : (typeof data.wipTasks !== 'undefined' ? data.wipTasks : []));
